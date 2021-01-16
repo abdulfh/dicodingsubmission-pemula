@@ -1,6 +1,7 @@
 package com.example.dicoding_made_submission;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
         moveWithDataIntent.putExtra(IdolDetail.IDOL_NAME, idolModel.getName());
         moveWithDataIntent.putExtra(IdolDetail.IDOL_DOB, idolModel.getBirthday());
         moveWithDataIntent.putExtra(IdolDetail.IDOL_DETAIL, idolModel.getDetail());
+        moveWithDataIntent.putExtra(IdolDetail.IDOL_PHOTO, idolModel.getPhoto());
         startActivity(moveWithDataIntent);
     }
 
