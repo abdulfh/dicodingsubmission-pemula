@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.dicoding_made_submission.activity.AuthorActivity;
 import com.example.dicoding_made_submission.activity.IdolDetail;
 import com.example.dicoding_made_submission.adapter.ListIdolAdapter;
 import com.example.dicoding_made_submission.model.IdolModel;
@@ -44,8 +45,14 @@ public class MainActivity extends AppCompatActivity {
     private void setMode(int selectedMode) {
         switch (selectedMode) {
             case R.id.about:
+                showAuthor();
                 break;
         }
+    }
+
+    private void showAuthor() {
+        Intent intent = new Intent(MainActivity.this, AuthorActivity.class);
+        startActivity(intent);
     }
 
     private void showRecyclerList(){
