@@ -17,8 +17,14 @@ public class ListIdolAdapter extends RecyclerView.Adapter<ListIdolAdapter.ListVi
 
     private ArrayList<IdolModel> listIdol;
 
+    private OnItemClickCallback onItemClickCallback;
+
     public ListIdolAdapter(ArrayList<IdolModel> list) {
         this.listIdol = list;
+    }
+
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
     }
 
     @NonNull
@@ -29,7 +35,7 @@ public class ListIdolAdapter extends RecyclerView.Adapter<ListIdolAdapter.ListVi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ListViewHolder holder, int position) {
         IdolModel idolModel = listIdol.get(position);
         Glide.with(holder.itemView.getContext())
                 .load(idolModel.getPhoto())
@@ -37,6 +43,13 @@ public class ListIdolAdapter extends RecyclerView.Adapter<ListIdolAdapter.ListVi
         holder.tvName.setText(idolModel.getName());
         holder.tvDetail.setText(idolModel.getDetail());
         holder.tvBirthday.setText(idolModel.getBirthday());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onItemClickCallback.onItemClicked(listIdol.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
@@ -55,5 +68,9 @@ public class ListIdolAdapter extends RecyclerView.Adapter<ListIdolAdapter.ListVi
             tvBirthday = itemView.findViewById(R.id.tv_birthday);
             tvDetail = itemView.findViewById(R.id.tv_item_detail);
         }
+    }
+
+    public interface OnItemClickCallback {
+        void onItemClicked(IdolModel idolModel);
     }
 }

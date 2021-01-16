@@ -2,6 +2,7 @@ package com.example.dicoding_made_submission;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -47,7 +48,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void showRecyclerList(){
         rvIdol.setLayoutManager(new LinearLayoutManager(this));
-        ListIdolAdapter listHeroAdapter = new ListIdolAdapter(idolModelArrayList);
-        rvIdol.setAdapter(listHeroAdapter);
+        ListIdolAdapter listIdolAdapter = new ListIdolAdapter(idolModelArrayList);
+        rvIdol.setAdapter(listIdolAdapter);
+
+        listIdolAdapter.setOnItemClickCallback(new ListIdolAdapter.OnItemClickCallback() {
+            @Override
+            public void onItemClicked(IdolModel idolModel) {
+                showSelectedHero(idolModel);
+            }
+        });
     }
+    private void showSelectedHero(IdolModel idolModel) {
+        Toast.makeText(this, idolModel.getName(), Toast.LENGTH_SHORT).show();
+    }
+
 }
