@@ -35,6 +35,7 @@ public class ListIdolAdapter extends RecyclerView.Adapter<ListIdolAdapter.ListVi
                 .load(idolModel.getPhoto())
                 .into(holder.imgPhoto);
         holder.tvName.setText(idolModel.getName());
+        holder.tvDetail.setText(idolModel.getDetail());
         holder.tvBirthday.setText(idolModel.getBirthday());
     }
 
