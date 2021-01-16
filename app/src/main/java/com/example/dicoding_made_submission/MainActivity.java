@@ -1,5 +1,6 @@
 package com.example.dicoding_made_submission;
 
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -7,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.dicoding_made_submission.activity.IdolDetail;
 import com.example.dicoding_made_submission.adapter.ListIdolAdapter;
 import com.example.dicoding_made_submission.model.IdolModel;
 import com.example.dicoding_made_submission.utility.IdolData;
@@ -59,7 +61,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void showSelectedHero(IdolModel idolModel) {
-        Toast.makeText(this, idolModel.getName(), Toast.LENGTH_SHORT).show();
+        Intent moveWithDataIntent = new Intent(MainActivity.this, IdolDetail.class);
+        moveWithDataIntent.putExtra(IdolDetail.IDOL_NAME, idolModel.getName());
+        moveWithDataIntent.putExtra(IdolDetail.IDOL_DOB, idolModel.getBirthday());
+        moveWithDataIntent.putExtra(IdolDetail.IDOL_DETAIL, idolModel.getDetail());
+        startActivity(moveWithDataIntent);
     }
 
 }
