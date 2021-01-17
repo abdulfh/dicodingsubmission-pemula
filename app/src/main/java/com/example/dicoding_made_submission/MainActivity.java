@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         rvIdol.setHasFixedSize(true);
 
         idolModelArrayList.addAll(IdolData.getListData());
+        getSupportActionBar().setTitle("Idol List");
         showRecyclerList();
     }
     @Override
@@ -64,11 +65,11 @@ public class MainActivity extends AppCompatActivity {
         listIdolAdapter.setOnItemClickCallback(new ListIdolAdapter.OnItemClickCallback() {
             @Override
             public void onItemClicked(IdolModel idolModel) {
-                showSelectedHero(idolModel);
+                showSelectedIdol(idolModel);
             }
         });
     }
-    private void showSelectedHero(IdolModel idolModel) {
+    private void showSelectedIdol(IdolModel idolModel) {
         Intent moveWithDataIntent = new Intent(MainActivity.this, IdolDetail.class);
         moveWithDataIntent.putExtra(IdolDetail.IDOL_NAME, idolModel.getName());
         moveWithDataIntent.putExtra(IdolDetail.IDOL_DOB, idolModel.getBirthday());
@@ -76,5 +77,4 @@ public class MainActivity extends AppCompatActivity {
         moveWithDataIntent.putExtra(IdolDetail.IDOL_PHOTO, idolModel.getPhoto());
         startActivity(moveWithDataIntent);
     }
-
 }
