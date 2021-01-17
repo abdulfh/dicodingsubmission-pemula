@@ -3,4 +3,5 @@
     <string name="idol_name">Idol Name</string>
     <string name="idol_birthday">Idol Birthday</string>
     <string name="detail">Detail</string>
+    <string name="data_received">Data</string>
 </resources>
