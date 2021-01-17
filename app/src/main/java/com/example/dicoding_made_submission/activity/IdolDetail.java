@@ -31,6 +31,8 @@ public class IdolDetail extends AppCompatActivity {
         String detail = getIntent().getStringExtra(IDOL_DETAIL);
         int Url = getIntent().getIntExtra(IDOL_PHOTO,0);
 
+        getSupportActionBar().setTitle(name);
+
         Glide.with(tvIdolPhoto.getContext())
                 .load(Url)
                 .into(tvIdolPhoto);
